@@ -267,14 +267,20 @@ discardWeapon model =
 -- Flee from the room
 fleeRoom : GameState -> ( GameState, Cmd Msg )
 fleeRoom model =
-    if not model.canFlee then
+    let
+        -- Get cards currently in the room
+        roomCards =
+            model.room.cards
+                |> List.filterMap identity
+                
+        -- Check if room is empty
+        isRoomEmpty = List.isEmpty roomCards
+    in
+    if not model.canFlee || isRoomEmpty then
+        -- Can't flee if already fled last room or the room is empty
         ( model, Cmd.none )
     else
         let
-            roomCards =
-                model.room.cards
-                    |> List.filterMap identity
-                    
             newRoom =
                 { cards = List.repeat 4 Nothing
                 , number = model.room.number

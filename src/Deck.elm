@@ -27,11 +27,11 @@ createDeck =
                 ) 
                 suits
     in
-    -- Remove red face cards (Hearts and Diamonds Jack, Queen, King)
+    -- Remove red face cards (Hearts and Diamonds Jack, Queen, King) and red aces
     List.filter 
         (\card -> 
             not ((card.suit == Hearts || card.suit == Diamonds) && 
-                (card.rank == Jack || card.rank == Queen || card.rank == King))
+                (card.rank == Jack || card.rank == Queen || card.rank == King || card.rank == Ace))
         )
         allCards
 
