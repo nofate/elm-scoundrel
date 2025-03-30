@@ -1,0 +1,25 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Setup Elm
+        uses: jorelali/setup-elm@v3
+        with:
+          elm-version: 0.19.1
+          
+      - name: Build Elm
+        run: elm make src/Main.elm --optimize --output=public/main.js
+          
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: public 
