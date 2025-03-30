@@ -1,0 +1,215 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e2e;
+    color: #cdd6f4;
+    margin: 0;
+    padding: 0;
+}
+
+.game-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.health {
+    font-size: 18px;
+    font-weight: bold;
+    color: #f38ba8;
+}
+
+.room {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.game-board {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.top-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.deck, .discard {
+    width: 120px;
+    height: 180px;
+    border: 2px solid #89b4fa;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #313244;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.deck:hover, .discard:hover {
+    transform: scale(1.05);
+}
+
+.weapon-spot {
+    width: 120px;
+    height: 180px;
+    border: 2px dashed #f9e2af;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.empty-spot {
+    color: #6c7086;
+    font-style: italic;
+}
+
+.room-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.card-slot {
+    width: 120px;
+    height: 180px;
+    border: 2px dashed #6c7086;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    padding: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.foe {
+    background-color: #181825;
+    color: #f38ba8;
+    border: 2px solid #f38ba8;
+}
+
+.potion {
+    background-color: #181825;
+    color: #a6e3a1;
+    border: 2px solid #a6e3a1;
+}
+
+.weapon {
+    background-color: #181825;
+    color: #f9e2af;
+    border: 2px solid #f9e2af;
+}
+
+.card-rank {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.card-suit {
+    font-size: 24px;
+    text-align: center;
+}
+
+.card-value {
+    font-size: 18px;
+    font-weight: bold;
+    text-align: right;
+}
+
+.card-type {
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #89b4fa;
+    color: #11111b;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+button:hover:not(:disabled) {
+    background-color: #74c7ec;
+}
+
+button:disabled {
+    background-color: #6c7086;
+    cursor: not-allowed;
+}
+
+.game-over {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(30, 30, 46, 0.9);
+    z-index: 10;
+}
+
+.won h2 {
+    color: #a6e3a1;
+}
+
+.lost h2 {
+    color: #f38ba8;
+}
+
+.card-stack {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: visible;  /* Allow cards to extend beyond container */
+}
+
+.stacked-foe {
+    position: absolute;
+    width: 80%;  /* Make slightly smaller than the card beneath */
+    height: 80%;
+    transform: rotate(3deg);  /* Slight rotation for visual effect */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Add shadow for depth */
+} 
