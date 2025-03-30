@@ -6034,7 +6034,10 @@ var $author$project$Update$fightWithWeapon = F2(
 					ay: $elm$core$Maybe$Nothing,
 					aK: newHealth,
 					aM: newRoom,
-					aN: A2($elm$core$List$cons, foe, model.aN)
+					aN: _Utils_ap(
+						model.aN,
+						_List_fromArray(
+							[foe]))
 				}) : model;
 			return $author$project$Update$checkGameStatus(newGameState);
 		}
@@ -6581,18 +6584,18 @@ var $author$project$View$viewStackedFoes = function (stackedFoes) {
 							A2(
 							$elm$html$Html$Attributes$style,
 							'top',
-							$elm$core$String$fromInt(index * 10) + 'px'),
+							$elm$core$String$fromInt((index * 10) - 20) + 'px'),
 							A2(
 							$elm$html$Html$Attributes$style,
 							'z-index',
-							$elm$core$String$fromInt(10 + index))
+							$elm$core$String$fromInt(10 - index))
 						]),
 					_List_fromArray(
 						[
 							A2($author$project$View$viewCard, foe, false)
 						]));
 			}),
-		stackedFoes);
+		$elm$core$List$reverse(stackedFoes));
 };
 var $author$project$View$viewWeaponSpot = function (model) {
 	return A2(
