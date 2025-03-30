@@ -41,4 +41,23 @@ The experiment demonstrates both the strengths and limitations of current AI cod
 3. Run `elm reactor`
 4. Open `http://localhost:8000/src/Main.elm` in your browser
 
+Then open `public/index.html` in your browser.
+
+## How to Play
+
+- Draw cards from the deck to fill the room
+- Use potions to heal
+- Equip weapons to fight foes
+- Stack foes of lower rank on your weapon
+- Discard your weapon when you're done with it
+- Flee the room if you're in trouble (but you can only flee once)
+
+The goal is to defeat all foes while managing your health.
+
+## Credits
+
+The original Scoundrel game rules were authored by Zach Gage and Kurt Bieg. You can learn more about the original game at [stfj.net](http://stfj.net/index2.php?year=2011&project=art/2011/Scoundrel.pdf).
+
+This implementation is a tribute to their innovative design.
+
 ### Building for Production
