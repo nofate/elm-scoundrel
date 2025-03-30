@@ -10,6 +10,8 @@ body {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .header {
@@ -369,4 +371,203 @@ button:disabled {
     opacity: 1;
     background-color: #45475a;
     transform: translateX(3px);
+}
+
+/* Responsive card sizes - these will be the base sizes that scale down */
+.card-slot, .deck, .discard, .weapon-spot {
+    width: 120px;
+    height: 180px;
+    min-width: 80px; /* Prevent cards from getting too small */
+}
+
+/* Medium screens (tablets) */
+@media screen and (max-width: 768px) {
+    .game-container {
+        padding: 10px;
+    }
+
+    .card-slot, .deck, .discard, .weapon-spot {
+        width: 100px;
+        height: 150px;
+    }
+
+    .room-container {
+        gap: 10px;
+    }
+
+    .top-row {
+        gap: 10px;
+    }
+
+    .card-rank {
+        font-size: 20px;
+    }
+
+    .card-suit {
+        font-size: 20px;
+    }
+
+    .card-value {
+        font-size: 16px;
+    }
+}
+
+/* Small screens (phones) */
+@media screen and (max-width: 480px) {
+    .game-container {
+        padding: 5px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .card-slot, .deck, .discard, .weapon-spot {
+        width: 70px;
+        height: 105px;
+    }
+
+    .room-container {
+        gap: 5px;
+    }
+
+    .top-row {
+        gap: 5px;
+    }
+
+    .card {
+        padding: 5px;
+    }
+
+    .card-rank {
+        font-size: 16px;
+    }
+
+    .card-suit {
+        font-size: 16px;
+    }
+
+    .card-value {
+        font-size: 14px;
+    }
+
+    .card-type {
+        font-size: 12px;
+        bottom: 5px;
+    }
+
+    /* Adjust stacked foes for smaller screens */
+    .stacked-foe {
+        width: 90%;
+        height: 90%;
+    }
+
+    /* Adjust buttons for mobile */
+    .help-button {
+        bottom: 10px;
+        right: 10px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+    }
+
+    .github-link {
+        top: 10px;
+        right: 10px;
+    }
+
+    .github-link a {
+        padding: 6px 10px;
+        font-size: 12px;
+    }
+
+    /* Adjust instructions panel for mobile */
+    .instructions-content {
+        padding: 15px;
+        width: 95%;
+        max-height: 90vh;
+    }
+
+    .instructions-body {
+        font-size: 14px;
+    }
+
+    .instructions ul {
+        padding-left: 20px;
+    }
+
+    .close-button {
+        top: 5px;
+        right: 5px;
+    }
+}
+
+/* Very small screens */
+@media screen and (max-width: 360px) {
+    .card-slot, .deck, .discard, .weapon-spot {
+        width: 60px;
+        height: 90px;
+    }
+
+    .card-rank {
+        font-size: 14px;
+    }
+
+    .card-suit {
+        font-size: 14px;
+    }
+
+    .card-value {
+        font-size: 12px;
+    }
+
+    .card-type {
+        font-size: 10px;
+    }
+}
+
+/* Landscape mode adjustments */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+    .game-container {
+        padding: 5px;
+    }
+
+    .header {
+        flex-direction: row;
+        justify-content: space-around;
+        margin-bottom: 5px;
+    }
+
+    .card-slot, .deck, .discard, .weapon-spot {
+        width: 80px;
+        height: 120px;
+    }
+
+    /* Adjust instructions panel for landscape */
+    .instructions-content {
+        max-height: 95vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .instructions-body {
+        overflow-y: auto;
+    }
+}
+
+/* Ensure touch targets are large enough */
+@media (hover: none) and (pointer: coarse) {
+    .card:hover {
+        transform: none;
+    }
+
+    button, 
+    .help-button,
+    .github-link a {
+        min-height: 44px; /* Minimum touch target size */
+        min-width: 44px;
+    }
 } 
