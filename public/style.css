@@ -343,4 +343,30 @@ button:disabled {
 .help-button:hover {
     background-color: #74c7ec;
     transform: scale(1.1);
+}
+
+.github-link {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    transform: none;  /* Remove the vertical centering transform */
+    z-index: 900;
+    font-size: 14px;
+}
+
+.github-link a {
+    color: #cdd6f4;
+    text-decoration: none;
+    opacity: 0.8;
+    transition: all 0.2s;
+    padding: 8px 12px;
+    background-color: #313244;
+    border-radius: 4px;
+    border: 1px solid #89b4fa;
+}
+
+.github-link a:hover {
+    opacity: 1;
+    background-color: #45475a;
+    transform: translateX(3px);
 } 
