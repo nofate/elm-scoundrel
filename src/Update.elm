@@ -240,7 +240,7 @@ fightWithWeapon foe model =
                         { model
                         | playerHealth = newHealth
                         , room = newRoom
-                        , stackedFoes = foe :: model.stackedFoes  -- Add foe to stacked list
+                        , stackedFoes = model.stackedFoes ++ [foe]
                         , draggedCard = Nothing
                         }
                     else

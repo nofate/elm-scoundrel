@@ -231,14 +231,15 @@ onDrop target =
 -- Function to view stacked foes with offset
 viewStackedFoes : List Card -> List (Html Msg)
 viewStackedFoes stackedFoes =
-    List.indexedMap 
-        (\index foe -> 
-            div 
-                [ class "stacked-foe"
-                , style "left" (String.fromInt (index * 30) ++ "px")
-                , style "top" (String.fromInt (index * 10) ++ "px")
-                , style "z-index" (String.fromInt (10 + index))
-                ] 
-                [ viewCard foe False ]
-        )
-        stackedFoes 
+    stackedFoes
+        |> List.reverse
+        |> List.indexedMap 
+            (\index foe -> 
+                div 
+                    [ class "stacked-foe"
+                    , style "left" (String.fromInt (index * 30) ++ "px")
+                    , style "top" (String.fromInt ((index * 10) - 20) ++ "px")
+                    , style "z-index" (String.fromInt (10 - index))
+                    ] 
+                    [ viewCard foe False ]
+            ) 
