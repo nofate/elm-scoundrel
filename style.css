@@ -57,8 +57,12 @@ body {
     transition: transform 0.2s;
 }
 
-.deck:hover, .discard:hover {
+.deck:hover {
     transform: scale(1.05);
+}
+
+.discard {
+    cursor: default;
 }
 
 .weapon-spot {
