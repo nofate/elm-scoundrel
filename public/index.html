@@ -1,17 +1,102 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Scoundrel - Card Game</title>
-    <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <title>Scoundrel</title>
+    <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
     <div id="app"></div>
-    <script src="./main.js"></script>
+    
+    <!-- Help button -->
+    <button id="help-button" class="help-button">?</button>
+    
+    <!-- Instructions panel -->
+    <div id="instructions" class="instructions">
+        <div class="instructions-content">
+            <h2>How to Play Scoundrel</h2>
+            <button id="close-instructions" class="close-button">×</button>
+            
+            <div class="instructions-body">
+                <p><strong>Goal:</strong> Defeat all foes while managing your health.</p>
+                
+                <h3>Card Types:</h3>
+                <ul>
+                    <li><span class="card-type weapon">Weapons</span> - Equip to fight foes</li>
+                    <li><span class="card-type potion">Potions</span> - Use to restore health</li>
+                    <li><span class="card-type foe">Foes</span> - Defeat them to progress</li>
+                </ul>
+                
+                <h3>Basic Actions:</h3>
+                <ul>
+                    <li>Click the <strong>Deck</strong> to draw cards</li>
+                    <li>Click a <strong>Potion</strong> to heal</li>
+                    <li>Click a <strong>Weapon</strong> to equip it</li>
+                    <li><strong>Combat:</strong>
+                        <ul>
+                            <li>Clicking a <strong>Foe</strong> will fight barehanded (you take full damage)</li>
+                            <li>To fight with a weapon, drag a foe onto your equipped weapon</li>
+                            <li>Weapons reduce damage you take when fighting foes</li>
+                        </ul>
+                    </li>
+                    <li>You can stack foes of lower rank on your weapon</li>
+                    <li>Click your equipped weapon to discard it and all stacked foes</li>
+                    <li>Click <strong>Flee</strong> to escape from a room (you can't flee twice in a row)
+                        <ul>
+                            <li>When you flee, all cards in the room go to the bottom of the deck</li>
+                            <li>This is strategically important for postponing difficult encounters</li>
+                        </ul>
+                    </li>
+                </ul>
+                
+                <p><strong>Tip:</strong> Use potions strategically and try to stack weaker foes before tackling stronger ones.</p>
+                
+                <button id="start-game" class="action-button">Start Playing</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
     <script>
         var app = Elm.Main.init({
             node: document.getElementById('app')
+        });
+        
+        // Check if user has seen instructions before
+        document.addEventListener('DOMContentLoaded', function() {
+            // Only show instructions if user hasn't seen them before
+            if (localStorage.getItem('scoundrel_seen_instructions') !== 'true') {
+                showInstructions();
+                // Mark instructions as seen for future visits
+                localStorage.setItem('scoundrel_seen_instructions', 'true');
+            }
+        });
+        
+        // Helper function to show instructions
+        function showInstructions() {
+            document.getElementById('instructions').classList.add('visible');
+        }
+        
+        // Helper function to hide instructions
+        function hideInstructions() {
+            document.getElementById('instructions').classList.remove('visible');
+        }
+        
+        // Show instructions when clicking help button
+        document.getElementById('help-button').addEventListener('click', showInstructions);
+        
+        // Close instructions when clicking close button
+        document.getElementById('close-instructions').addEventListener('click', hideInstructions);
+        
+        // Close instructions when clicking start button
+        document.getElementById('start-game').addEventListener('click', hideInstructions);
+        
+        // Toggle instructions when pressing '?' key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === '?') {
+                document.getElementById('instructions').classList.toggle('visible');
+            }
         });
     </script>
 </body>
