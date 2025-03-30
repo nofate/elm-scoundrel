@@ -210,10 +210,16 @@ button:disabled {
 
 .stacked-foe {
     position: absolute;
-    width: 80%;  /* Make slightly smaller than the card beneath */
+    width: 80%;
     height: 80%;
-    transform: rotate(3deg);  /* Slight rotation for visual effect */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Add shadow for depth */
+    transform: rotate(3deg);
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+.stacked-foe:hover {
+    transform: rotate(3deg);
 }
 
 /* Instructions panel */
